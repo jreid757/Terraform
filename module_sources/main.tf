@@ -357,7 +357,8 @@ module "server_subnet_1" {
   aws_security_group.vpc-web.id]
 }
 module "autoscaling" {
-  source = "github.com/terraform-aws-modules/terraform-aws-autoscaling?ref=v4.9.0"
+  source  = "terraform-aws-modules/autoscaling/aws"
+  version = "4.9.0"
 
   # Autoscaling group
   name = "myasg"
@@ -376,5 +377,9 @@ module "autoscaling" {
   tags_as_map = {
     Name = "Web EC2 Server 2"
   }
+}
+
+output "asg_group_size" {
+value = module.autoscaling.autoscaling_group_max_size
 }
 
