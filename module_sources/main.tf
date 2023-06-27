@@ -393,7 +393,7 @@ output "s3_bucket_name" {
 
 module "vpc" {
   source             = "terraform-aws-modules/vpc/aws"
-  version            = "3.11.0"
+  version            = ">3.0.0"
   name               = "my-vpc-terraform"
   cidr               = "10.0.0.0/16"
   azs                = ["us-east-1a", "us-east-1b", "us-east-1c"]
