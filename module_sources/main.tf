@@ -330,9 +330,13 @@ output "public_ip_server_subnet_1" {
 output "public_dns_server_subnet_1" {
   value = aws_instance.web_server.public_dns
 }
+output "size" {
+  value = module.server.size
+}
 module "server" {
   source    = "./modules/server"
   ami       = data.aws_ami.ubuntu.id
+  size      = "t2.micro"
   subnet_id = aws_subnet.public_subnets["public_subnet_3"].id
   security_groups = [
     aws_security_group.vpc-ping.id,
